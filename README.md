@@ -1,6 +1,6 @@
 # My SOC Investigation: SOC143 - Password Stealer (EventID: 90)
 
-I completed this incident investigation on the LetsDefend platform, scoring a 100% success rate. The alert was triggered by an inbound email carrying a dangerous password-stealing Trojan. After analyzing the evidence, I confirmed this case as a **True Positive**.
+I completed this incident investigation on the LetsDefend platform, scoring a 100% success rate. The alert was triggered by an inbound email carrying a dangerous password-stealing Trojan. After analyzing the evidence, I confirmed this case as a True Positive.
 
 **Sender (Spoofed):** bill@microsoft[.]com
 
