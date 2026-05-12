@@ -2,7 +2,7 @@
 
 Welcome to my cybersecurity portfolio! This repository contains my practical incident response reports and threat analysis write-ups from real-world simulations on the LetsDefend platform.
 
----
+
 
 # Completed Investigations (Case Studies)
 
@@ -19,7 +19,7 @@ Type: SQL Injection Attack / Web Application Security
      
 Outcome: True Positive. Identified a database exploitation attempt via a malicious URL request.
 
----
+
 # Tools & Technologies Used
 SIEM / Log Analysis: LetsDefend Log Management, Exchange Mail Gateway logs
 
