@@ -1,52 +1,35 @@
-# SOC Analysis Report: SOC143 - Password Stealer Detected (EventID: 90)
+# My SOC Investigation: SOC143 - Password Stealer (EventID: 90)
 
-## Executive Summary
-* **Platform:** LetsDefend Blue Team Labs
-* **Event ID:** 90
-* **Date/Time:** Apr 26, 2021, 11:03 PM
-* **Rule Triggered:** SOC143 - Password Stealer Detected
-* **Analysis Outcome:** **True Positive**
-* **Final Score:** 100% Passed
+## Quick Overview
+I completed this incident investigation on the LetsDefend platform, scoring a **100% success rate**. The alert was triggered by an inbound email carrying a dangerous password-stealing Trojan. After analyzing the evidence, I confirmed this case as a **True Positive**.
 
----
-
-## Initial Alert Details & Context
-The SOC monitoring system triggered a high-severity alert indicating an inbound email containing a suspected password stealing Trojan payload. 
-
-* **Sender Address (Spoofed):** `bill@microsoft.com`
-* **Source SMTP IP:** `180.76.101.229`
-* **Recipient Address:** `ellie@letsdefend.io`
-* **Email Subject:** `.` (Empty/Suspicious)
-* **Device Action:** Allowed (Delivered to Inbox)
+* **Sender (Spoofed):** bill@microsoft.com
+* **True Source IP:** 180.76.101.229
+* **Target Mailbox:** ellie@letsdefend.io
+* **Email Subject:** `.` (Highly suspicious single dot)
 
 ---
 
-## Investigation & Playbook Steps
+## 🛠️ How I Investigated This Incident
 
-### 1. Artifact & Email Analysis
-* **Email & Attachment Check:** Verified the inbound email metadata. The message contained a malicious attachment disguised as a legitimate communication from a trusted domain (`microsoft.com`).
-* **Malware Verification:** Extracted the attachment's **MD5 Hash** and analyzed it via threat intelligence platforms (VirusTotal). The file was positively identified and flagged by multiple vendors as an active **Trojan/Password Stealer**.
+### Step 1: Checking the Email & Malware Payload
+First, I looked into the email headers and the attachment. The attacker used email spoofing to pretend they were writing from a trusted Microsoft domain. I extracted the attachment's **MD5 Hash** and checked it against VirusTotal. Multiple security vendors flagged the file as an active **Trojan / Password Stealer**.
 
-### 2. Endpoint Impact Assessment
-* **Delivery Confirmation:** Investigated the mail gateway logs. The email was successfully **Delivered** to the victim's mailbox (`ellie@letsdefend.io`).
-* **Execution Status:** Cross-referenced host-based logs and endpoint telemetry. The malicious attachment/URL was **Not Opened** by the user. No active compromise occurred on the endpoint.
+### Step 2: Checking Host Impact
+Next, I needed to check if the network was already compromised. I analyzed the mail gateway logs and confirmed that the email was successfully **Delivered** to Ellie's inbox. 
+
+However, after verifying the endpoint logs and system telemetry, I found that the user **did not open or execute the file**. This means the threat was contained before it could infect the machine.
 
 ---
 
 ## Indicators of Compromise (IoCs)
-
-
-| Artifact Type | Value / Indicator | Context / Comment |
-| :--- | :--- | :--- |
-| **Source IP** | `180.76.101.229` | Malicious SMTP server attempting email spoofing |
-| **Spoofed Domain** | `bill@microsoft.com` | Pretexting / Impersonation technique |
-| **File Hash (MD5)** | `[HASH containing trojan]` | Password Stealer / Trojan payload detected on VirusTotal |
+* **Malicious Server IP:** `180.76.101.229` (The actual server used to send the spam)
+* **Spoofed Address:** `bill@microsoft.com`
 
 ---
 
-## Containment & Remediation Recommendations
-Since the malicious payload was delivered but not executed, the attack was successfully mitigated during the initial containment phase. The following incident response steps were proposed:
-
-1. **Email Purge:** Immediately delete the malicious message from the recipient's mailbox (`ellie@letsdefend.io`) to prevent future accidental execution.
-2. **Network Block:** Block the sender IP address (`180.76.101.229`) at the email gateway/firewall level.
-3. **Endpoint Protection:** Blacklist and block the malicious MD5 Trojan hash across all enterprise EDR (Endpoint Detection and Response) agents.
+## My Recommendations for Containment
+Even though the user didn't run the file, the malicious artifact is still sitting in the inbox. I submitted the following remediation steps to close the case:
+1. **Purge the Email:** Delete the message from `ellie@letsdefend.io` immediately so no one clicks it by accident.
+2. **Block the Sender:** Add the source IP `180.76.101.229` to the firewall/mail gateway blocklist.
+3. **Blacklist the Hash:** Push the malicious MD5 hash to our EDR/Antivirus solution to block it enterprise-wide.
