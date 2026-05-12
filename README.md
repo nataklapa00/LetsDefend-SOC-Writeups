@@ -4,7 +4,7 @@ Welcome to my cybersecurity portfolio! This repository contains my practical inc
 
 
 
-# Completed Investigations (Case Studies)
+Completed Investigations (Case Studies)
 
 Click on the links below to read the full incident response reports:
 
@@ -20,7 +20,7 @@ Type: SQL Injection Attack / Web Application Security
 Outcome: True Positive. Identified a database exploitation attempt via a malicious URL request.
 
 
-# Tools & Technologies Used
+Tools & Technologies Used
 SIEM / Log Analysis: LetsDefend Log Management, Exchange Mail Gateway logs
 
 Threat Intelligence: VirusTotal, AbuseIPDB
