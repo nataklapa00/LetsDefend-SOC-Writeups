@@ -17,14 +17,14 @@ Firewall Action: Allowed
 
 How I Investigated This Incident
 
-## Step 1: Analyzing the Traffic and URL
+#Step 1: Analyzing the Traffic and URL
 I began by examining the web proxy logs associated with EventID 89. The logs showed that an external IP address, 101.32.223.119, sent a highly suspicious web request to our internal SQLServer. 
 
-The exact requested URL was: https://172.16.20.6/userNumber=1 AND (SELECT * FROM Users) = 1
+The exact requested URL was: https[:]//172[.]16.20[.]6/userNumber=1 AND (SELECT * FROM Users) = 1
 
 Looking closely at this URL, the attacker appended a database query payload to the end of the standard parameter. They were trying to manipulate the web application to extract sensitive data straight from our database tables. This is a classic textbook SQL Injection attempt.
 
-## Step 2: Checking Server Impact
+#Step 2: Checking Server Impact
 Next, I reviewed the alert context. The rule triggered because the server started returning multiple HTTP 500 Internal Server Error codes. This indicates that the attacker's web requests were successfully hitting the backend application, causing the web server to fail or leak information while processing the bad SQL queries. 
 
 The logs confirmed that the attacker successfully accessed the application. Because the local firewall action was set to Allowed, the attack traffic was not stopped automatically by our network devices.
