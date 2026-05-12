@@ -4,10 +4,10 @@ Quick Overview
 
 I completed this incident investigation on the LetsDefend platform, scoring a 100% success rate. The alert was triggered by an inbound email carrying a dangerous password-stealing Trojan. After analyzing the evidence, I confirmed this case as a **True Positive**.
 
-* **Sender (Spoofed):** bill@microsoft[.]com
-* **True Source IP:** 180.76.101[.]229
-* **Target Mailbox:** ellie@letsdefend[.]io
-* **Email Subject:** `.` (Highly suspicious single dot)
+**Sender (Spoofed):** bill@microsoft[.]com
+**True Source IP:** 180.76.101[.]229
+**Target Mailbox:** ellie@letsdefend[.]io
+**Email Subject:** `.` (Highly suspicious single dot)
 
 ---
 How I Investigated This Incident
