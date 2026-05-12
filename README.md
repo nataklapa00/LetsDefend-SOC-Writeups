@@ -10,9 +10,14 @@ Click on the links below to read the full incident response reports:
 
 1. **[SOC143 - Password Stealer Detected (100% Passed)](./SOC143-Password-Stealer.md)**
 
-    Type: Malware / Trojan Execution Prevention
+Type: Malware / Trojan Execution Prevention
    
-   Outcome: True Positive. Stopped a credential theft attempt via email spoofing.
+Outcome: True Positive. Stopped a credential theft attempt via email spoofing.
+
+2. **[SOC142 - Multiple HTTP 500 Response (100% Passed)](./SOC142-SQL-Injection.md)**
+Type: SQL Injection Attack / Web Application Security
+     
+Outcome: True Positive. Identified a database exploitation attempt via a malicious URL request.
 
 ---
 # Tools & Technologies Used
