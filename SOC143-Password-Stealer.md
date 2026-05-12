@@ -2,20 +2,20 @@
 
 I completed this incident investigation on the LetsDefend platform, scoring a 100% success rate. The alert was triggered by an inbound email carrying a dangerous password-stealing Trojan. After analyzing the evidence, I confirmed this case as a True Positive.
 
-**Sender (Spoofed):** bill@microsoft[.]com
+Sender (Spoofed): bill@microsoft[.]com
 
-**True Source IP:** 180.76.101[.]229
+True Source IP: 180.76.101[.]229
 
-**Target Mailbox:** ellie@letsdefend[.]io
+Target Mailbox: ellie@letsdefend[.]io
 
-**Email Subject:** `.` (Highly suspicious single dot)
+Email Subject: `.` (Highly suspicious single dot)
 
-How I Investigated This Incident
+# How I Investigated This Incident
 
-## Step 1: Checking the Email & Malware Payload
+# Step 1: Checking the Email & Malware Payload
 First, I looked into the email headers and the attachment. The attacker used email spoofing to pretend they were writing from a trusted Microsoft domain. I extracted the attachment's MD5 Hash and checked it against VirusTotal. Multiple security vendors flagged the file as an active Trojan / Password Stealer.
 
-## Step 2: Checking Host Impact
+# Step 2: Checking Host Impact
 Next, I needed to check if the network was already compromised. I analyzed the mail gateway logs and confirmed that the email was successfully Delivered to Ellie's inbox. 
 
 However, after verifying the endpoint logs and system telemetry, I found that the user did not open or execute the file. This means the threat was contained before it could infect the machine.
