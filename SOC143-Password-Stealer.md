@@ -10,7 +10,6 @@ I completed this incident investigation on the LetsDefend platform, scoring a 10
 
 **Email Subject:** `.` (Highly suspicious single dot)
 
----
 How I Investigated This Incident
 
 ## Step 1: Checking the Email & Malware Payload
@@ -21,14 +20,12 @@ Next, I needed to check if the network was already compromised. I analyzed the m
 
 However, after verifying the endpoint logs and system telemetry, I found that the user did not open or execute the file. This means the threat was contained before it could infect the machine.
 
----
 Indicators of Compromise (IoCs)
 
  Malicious Server IP: `180.76.101.229` (The actual server used to send the spam)
  
 Spoofed Address: `bill@microsoft.com`
 
----
 My Recommendations for Containment
 Even though the user didn't run the file, the malicious artifact is still sitting in the inbox. I submitted the following remediation steps to close the case:
 1. Purge the Email: Delete the message from `ellie@letsdefend.io` immediately so no one clicks it by accident.
