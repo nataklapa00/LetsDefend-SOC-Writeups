@@ -22,6 +22,10 @@ Outcome: True Positive. Defended against rogue local account creation via high-p
 Type: Data Leakage / Malicious Browser Add-on Analysis
 Outcome: True Positive. Discovered active C2 communication and stopped potential data exfiltration channel.
 
+5. **[SOC167 - LS Command Detected in Requested URL (100% Passed)](./SOC167-LS-Command-In-URL.md)**
+Type: Web Attack / False Positive Signature Tuning
+Outcome: False Positive. Identified a signature misfire where the word "skills" triggered a Linux command alarm.
+
 Tools & Technologies Used
 SIEM / Log Analysis: LetsDefend Log Management, Exchange Mail Gateway logs, Endpoint Telemetry Logs
 
