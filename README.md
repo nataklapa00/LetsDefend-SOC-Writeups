@@ -14,7 +14,7 @@ Outcome: True Positive. Stopped a credential theft attempt via email spoofing.
 Type: SQL Injection Attack / Web Application Security
 Outcome: True Positive. Identified a database exploitation attempt via a malicious URL request.
 
-3. **[SOC211 - Utilman.exe Winlogon Exploit Attempt (100% Passed)](./SOC211-Utilman-Exploit.md)**
+3. **[SOC211 - Utilman.exe Winlogon Exploit Attempt (100% Passed)](./SOC211-Utilman.md)**
 Type: Host Persistence / Living-off-the-land Binary (LOLBin) Mitigation
 Outcome: True Positive. Defended against rogue local account creation via high-privilege system binaries.
 
